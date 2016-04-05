@@ -16,7 +16,7 @@ export function NavbarDirective() {
 }
 
 class NavbarController {
-  constructor ($mdSidenav, $rootScope, $log,$state) {
+  constructor ($mdSidenav, $rootScope, $log, $state) {
     'ngInject';
 
     var self = this;
@@ -38,8 +38,8 @@ class NavbarController {
       self.previousStateParams = params;
     }
 
-    $rootScope.$on('$stateChangeSuccess',
-      function(event, toState, toParams, from, fromState, fromParams, options){
+    var listener = $rootScope.$on('$stateChangeSuccess',
+      function(event, toState, toParams, from, fromState){
 
         setState($state.current.name, from.name, fromState);
       });
